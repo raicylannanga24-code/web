@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
 
     if ($user && $user['password'] === $password) {
         $_SESSION['username'] = $user['username'];
-        $_SESSION['userrole'] = $user['userrole'];  // ← what key and value does it use? // ← stores role in session
+        $_SESSION['userrole'] = $user['userrole'];  
         header("Location: mydashboard.php");
         exit();
     } else {
