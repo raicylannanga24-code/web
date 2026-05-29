@@ -4,16 +4,16 @@ include 'database.php';
 
 $error = "";
 
-if (isset($_POST['login'])) {
+if (isset($_POST['login'])) {//check if ang form na submit na jud
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");//search for the user sa database
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    if ($user && $user['password'] === $password) {
+    if ($user && $user['password'] === $password) {//user seen, open dashboard
         $_SESSION['username'] = $user['username'];
         $_SESSION['userrole'] = $user['userrole'];  
         header("Location: mydashboard.php");
